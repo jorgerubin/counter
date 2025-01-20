@@ -1,5 +1,5 @@
 import Counter from './Counter';
-import { render, screen } from '@testing-library/react';
+import { render, screen, fireEvent  } from '@testing-library/react';
 
 
 test('renders bottom Incremental', () => {
@@ -11,7 +11,8 @@ test('renders bottom Incremental', () => {
   test('increment Incremental at moment to push bottom', () => {
     render(<Counter />);
     const buttonelement = screen.getByText(/incrementar/i);
-    const counterelement = screen.getByText(/Contador/i);
-    expect(buttonelement).toBeInTheDocument();
+    fireEvent.click(buttonelement);
+    const counterelement = screen.getByText(/Contador: 1/i);
+    expect(counterelement).toBeInTheDocument();
   });
   
